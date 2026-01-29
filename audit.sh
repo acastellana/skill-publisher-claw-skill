@@ -190,23 +190,10 @@ echo "━━━ METADATA ━━━"
 echo ""
 
 # ============================================
-# SUMMARY
-# ============================================
-echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-if [ $ERRORS -gt 0 ]; then
-    echo -e "${RED}✗ FAILED${NC} - $ERRORS error(s), $WARNINGS warning(s)"
-    echo "  Fix errors before publishing!"
-    exit 1
-elif [ $WARNINGS -gt 0 ]; then
-    echo -e "${YELLOW}⚠ PASSED WITH WARNINGS${NC} - $WARNINGS warning(s)"
-    echo "  Review warnings before publishing."
-    exit 0
-else
-    echo -e "${GREEN}✓ PASSED${NC} - Ready to publish!"
-    exit 0
-fi
 
-# Check README for AI-sounding language
+# ============================================
+# README QUALITY
+# ============================================
 echo "━━━ README QUALITY ━━━"
 if [ -f "README.md" ]; then
     AI_WORDS=$(grep -ciE "(comprehensive solution|seamless|robust|scalable|leverage|cutting-edge|revolutionary|game-changing|ever-evolving|serves as a testament)" README.md 2>/dev/null || echo 0)
@@ -227,3 +214,20 @@ else
     warn "No README.md found"
 fi
 echo ""
+
+# ============================================
+# SUMMARY
+# ============================================
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+if [ $ERRORS -gt 0 ]; then
+    echo -e "${RED}✗ FAILED${NC} - $ERRORS error(s), $WARNINGS warning(s)"
+    echo "  Fix errors before publishing!"
+    exit 1
+elif [ $WARNINGS -gt 0 ]; then
+    echo -e "${YELLOW}⚠ PASSED WITH WARNINGS${NC} - $WARNINGS warning(s)"
+    echo "  Review warnings before publishing."
+    exit 0
+else
+    echo -e "${GREEN}✓ PASSED${NC} - Ready to publish!"
+    exit 0
+fi
