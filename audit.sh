@@ -48,10 +48,10 @@ echo ""
 # ============================================
 echo "━━━ SECURITY ━━━"
 
-# Check for potential secrets
-if grep -rniE "(api[_-]?key|secret|password|token|bearer)\s*[=:]\s*['\"]?[a-zA-Z0-9]{8,}" . --include="*.md" --exclude-dir=templates 2>/dev/null | grep -v "example\|sample\|your[_-]" > /dev/null; then
+# Check for potential secrets (exclude code patterns like "token = Contract()")
+if grep -rniE "(api[_-]?key|secret|password|token|bearer)\s*[=:]\s*['\"]?[a-zA-Z0-9]{8,}" . --include="*.md" --exclude-dir=templates 2>/dev/null | grep -vE "example|sample|your[_-]|Contract\(|Address\(|\.view\(\)|\.emit\(\)" > /dev/null; then
     fail "POTENTIAL SECRETS FOUND - review carefully:"
-    grep -rniE "(api[_-]?key|secret|password|token|bearer)\s*[=:]\s*['\"]?[a-zA-Z0-9]{8,}" . --include="*.md" --exclude-dir=templates 2>/dev/null | grep -v "example\|sample\|your[_-]" | head -5
+    grep -rniE "(api[_-]?key|secret|password|token|bearer)\s*[=:]\s*['\"]?[a-zA-Z0-9]{8,}" . --include="*.md" --exclude-dir=templates 2>/dev/null | grep -vE "example|sample|your[_-]|Contract\(|Address\(|\.view\(\)|\.emit\(\)" | head -5
 else
     pass "No obvious secret patterns"
 fi
