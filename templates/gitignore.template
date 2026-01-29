@@ -1,0 +1,44 @@
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Editor files
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.project
+.settings/
+
+# Temporary files
+*.tmp
+*.bak
+*.orig
+*.log
+
+# Test artifacts
+test-output/
+coverage/
+.pytest_cache/
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# Environment and secrets (should never be committed)
+.env
+.env.local
+*.pem
+*.key
+secrets/
+credentials/
