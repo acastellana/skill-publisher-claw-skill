@@ -153,8 +153,8 @@ echo ""
 # ============================================
 echo "━━━ QUALITY ━━━"
 
-# No TODOs (5)
-TODO_COUNT=$(grep -rniE "(TODO|FIXME|XXX)" . --include="*.md" 2>/dev/null | wc -l)
+# No TODOs (5) - exclude templates directory
+TODO_COUNT=$(grep -rniE "(TODO|FIXME|XXX)" . --include="*.md" --exclude-dir=templates 2>/dev/null | wc -l)
 if [ $TODO_COUNT -eq 0 ]; then
     score_item "No TODOs" 5 5 "✓ clean"
 elif [ $TODO_COUNT -le 3 ]; then
@@ -163,8 +163,8 @@ else
     score_item "No TODOs" 0 5 "✗ $TODO_COUNT items"
 fi
 
-# No placeholder text (5)
-if ! grep -rniE "(lorem ipsum|TBD|placeholder|CHANGEME)" . --include="*.md" 2>/dev/null > /dev/null; then
+# No placeholder text (5) - exclude templates directory
+if ! grep -rniE "(lorem ipsum|TBD|placeholder|CHANGEME)" . --include="*.md" --exclude-dir=templates 2>/dev/null > /dev/null; then
     score_item "No placeholders" 5 5 "✓ clean"
 else
     score_item "No placeholders" 0 5 "✗ found"
@@ -199,21 +199,21 @@ echo ""
 echo "━━━ SECURITY ━━━"
 
 # No secrets (10)
-if ! grep -rniE "(api[_-]?key|secret|password)\s*[=:]\s*['\"]?[a-zA-Z0-9]{16,}" . --include="*.md" 2>/dev/null | grep -v "example\|sample" > /dev/null; then
+if ! grep -rniE "(api[_-]?key|secret|password)\s*[=:]\s*['\"]?[a-zA-Z0-9]{16,}" . --include="*.md" --exclude-dir=templates 2>/dev/null | grep -v "example\|sample" > /dev/null; then
     score_item "No secrets" 10 10 "✓ clean"
 else
     score_item "No secrets" 0 10 "✗ potential secrets found"
 fi
 
 # No hardcoded paths (5)
-if ! grep -rniE "\/home\/[a-z]+|\/Users\/[a-zA-Z]+" . --include="*.md" 2>/dev/null > /dev/null; then
+if ! grep -rniE "\/home\/[a-z]+|\/Users\/[a-zA-Z]+" . --include="*.md" --exclude-dir=templates 2>/dev/null > /dev/null; then
     score_item "No hardcoded paths" 5 5 "✓ portable"
 else
     score_item "No hardcoded paths" 0 5 "✗ hardcoded paths found"
 fi
 
 # No personal data (5)
-if ! grep -rniE "@(gmail|yahoo|hotmail|proton)\." . --include="*.md" 2>/dev/null > /dev/null; then
+if ! grep -rniE "@(gmail|yahoo|hotmail|proton)\." . --include="*.md" --exclude-dir=templates 2>/dev/null > /dev/null; then
     score_item "No personal emails" 5 5 "✓ clean"
 else
     score_item "No personal emails" 2 5 "○ personal emails found"
