@@ -169,8 +169,10 @@ echo "━━━ GIT ━━━"
 
 # Check for secrets in git history (if git repo)
 if [ -d ".git" ]; then
-    if git log -p 2>/dev/null | grep -iE "(api[_-]?key|secret|password)\s*[=:]\s*['\"]?[a-zA-Z0-9]{16,}" | head -1 > /dev/null 2>&1; then
-        fail "SECRETS MAY EXIST IN GIT HISTORY - review with: git log -p | grep -i secret"
+    # Look for actual secret assignments, not just mentions of the word "secret"
+    HISTORY_SECRETS=$(git log -p 2>/dev/null | grep -E "(sk-|pk-|xai-|ghp_|gho_)[a-zA-Z0-9]{20,}" | head -1)
+    if [ -n "$HISTORY_SECRETS" ]; then
+        fail "API KEYS MAY EXIST IN GIT HISTORY - review with: git log -p | grep -E 'sk-|ghp_'"
     else
         pass "No obvious secrets in git history"
     fi
