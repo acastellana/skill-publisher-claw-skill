@@ -153,8 +153,8 @@ echo ""
 # ============================================
 echo "━━━ QUALITY ━━━"
 
-# No TODOs (5) - exclude templates directory
-TODO_COUNT=$(grep -rniE "(TODO|FIXME|XXX)" . --include="*.md" --exclude-dir=templates 2>/dev/null | wc -l)
+# No TODOs (5) - exclude templates dir and grep/code examples
+TODO_COUNT=$(grep -rniE "(TODO|FIXME|XXX)" . --include="*.md" --exclude-dir=templates 2>/dev/null | grep -v "grep.*TODO\|echo.*TODO\|\"TODO" | wc -l)
 if [ $TODO_COUNT -eq 0 ]; then
     score_item "No TODOs" 5 5 "✓ clean"
 elif [ $TODO_COUNT -le 3 ]; then

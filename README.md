@@ -123,3 +123,9 @@ vim README.md
 ## License
 
 MIT
+
+## Resources
+
+- [ClawdHub](https://clawdhub.com) - Skill marketplace
+- [Clawdbot Docs](https://docs.clawd.bot) - Main documentation
+- [GitHub Issues](https://github.com/acastellana/moltbot-skill-publisher/issues) - Report bugs
