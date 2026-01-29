@@ -196,7 +196,7 @@ echo ""
 # ============================================
 echo "━━━ README QUALITY ━━━"
 if [ -f "README.md" ]; then
-    AI_WORDS=$(grep -ciE "(comprehensive solution|seamless|robust|scalable|leverage|cutting-edge|revolutionary|game-changing|ever-evolving|serves as a testament)" README.md 2>/dev/null || echo "0")
+    AI_WORDS=$(grep -rciE "(comprehensive solution|seamless|robust|scalable|leverage|cutting-edge|revolutionary|game-changing|ever-evolving|serves as a testament)" README.md 2>/dev/null | awk -F: '{sum+=$NF} END{print sum+0}')
     if [ $AI_WORDS -gt 0 ]; then
         warn "README contains AI-typical buzzwords ($AI_WORDS found)"
         grep -niE "(comprehensive solution|seamless|robust|scalable|leverage|cutting-edge|revolutionary|game-changing)" README.md 2>/dev/null | head -3
