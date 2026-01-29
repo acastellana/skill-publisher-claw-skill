@@ -99,9 +99,36 @@ fi
 echo ""
 
 # ============================================
-# DOCUMENTATION (25 points)
+# DOCUMENTATION (30 points)
 # ============================================
 echo "━━━ DOCUMENTATION ━━━"
+
+# README quality check (5)
+if [ -f "README.md" ]; then
+    README_ISSUES=0
+    
+    # Check for AI buzzwords
+    AI_BUZZWORDS=$(grep -ciE "(comprehensive solution|seamless|robust|scalable|leverage|cutting-edge|revolutionary|game-changing|ever-evolving landscape|serves as a testament)" README.md 2>/dev/null || echo 0)
+    [ "$AI_BUZZWORDS" -gt 0 ] && README_ISSUES=$((README_ISSUES + AI_BUZZWORDS))
+    
+    # Check first line isn't generic welcome
+    FIRST_LINE=$(head -3 README.md | grep -ciE "^(welcome|introduction|getting started|about)" 2>/dev/null || echo 0)
+    [ "$FIRST_LINE" -gt 0 ] && README_ISSUES=$((README_ISSUES + 2))
+    
+    # Check for emoji-decorated headers
+    EMOJI_HEADERS=$(grep -cE "^#+.*[🚀💡✨🎯🔥⭐]" README.md 2>/dev/null || echo 0)
+    [ "$EMOJI_HEADERS" -gt 2 ] && README_ISSUES=$((README_ISSUES + 1))
+    
+    if [ $README_ISSUES -eq 0 ]; then
+        score_item "README quality" 5 5 "✓ clear, human-sounding"
+    elif [ $README_ISSUES -le 2 ]; then
+        score_item "README quality" 3 5 "○ minor issues ($README_ISSUES)"
+    else
+        score_item "README quality" 1 5 "✗ AI-sounding ($README_ISSUES issues)"
+    fi
+else
+    score_item "README quality" 0 5 "✗ no README"
+fi
 
 # When to Use section (8)
 if [ -f "SKILL.md" ] && grep -qi "when to use\|## when" SKILL.md; then

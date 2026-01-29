@@ -203,3 +203,25 @@ else
     echo -e "${GREEN}✓ PASSED${NC} - Ready to publish!"
     exit 0
 fi
+
+# Check README for AI-sounding language
+echo "━━━ README QUALITY ━━━"
+if [ -f "README.md" ]; then
+    AI_WORDS=$(grep -ciE "(comprehensive solution|seamless|robust|scalable|leverage|cutting-edge|revolutionary|game-changing|ever-evolving|serves as a testament)" README.md 2>/dev/null || echo 0)
+    if [ "$AI_WORDS" -gt 0 ]; then
+        warn "README contains AI-typical buzzwords ($AI_WORDS found)"
+        grep -niE "(comprehensive solution|seamless|robust|scalable|leverage|cutting-edge|revolutionary|game-changing)" README.md 2>/dev/null | head -3
+    else
+        pass "README sounds human"
+    fi
+    
+    FIRST_LINE=$(head -1 README.md)
+    if echo "$FIRST_LINE" | grep -qiE "^# (welcome|introduction|about)"; then
+        warn "README starts with generic opener - lead with what it does"
+    else
+        pass "README opens with substance"
+    fi
+else
+    warn "No README.md found"
+fi
+echo ""

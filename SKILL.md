@@ -423,6 +423,23 @@ echo "🏁 Audit complete"
 6. (Optional) Submit to ClawdHub
 ```
 
+## README Quality
+
+A good README is discoverable and human-readable. See `docs/readme-quality.md` for detailed guidance.
+
+### Quick Checks
+- First line explains what it does (not "Welcome to...")
+- No AI buzzwords (comprehensive, seamless, leverage, cutting-edge)
+- Specific use cases, not vague claims
+- Sounds like a person, not a press release
+- No excessive emoji decoration in headers
+
+### SEO Tips
+- Use phrases people actually search for
+- Put most important info in first paragraph
+- Be specific about features (not "powerful validation" but "checks for API keys")
+
+
 ## Post-Publish
 
 - [ ] Verify GitHub renders correctly
