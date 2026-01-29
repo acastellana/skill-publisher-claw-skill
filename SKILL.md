@@ -158,7 +158,7 @@ grep -rniE "(console\.log|print\(|debugger)" . --include="*.md"
 - [ ] Consistent heading hierarchy
 
 ### Content Quality
-- [ ] No placeholder text ("Lorem ipsum", "TBD", "TODO")
+- [ ] No filler text (e.g., Lorem-ipsum, incomplete markers)
 - [ ] No commented-out sections
 - [ ] No duplicate content
 - [ ] No outdated information
