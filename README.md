@@ -1,6 +1,6 @@
-# Skill Publisher
+# skill-publisher-clawdbot-skill
 
-A complete toolkit for preparing AI assistant skills for public release.
+A Clawdbot skill and toolkit for preparing skills for public release.
 
 ## Tools
 
@@ -128,4 +128,4 @@ MIT
 
 - [ClawdHub](https://clawdhub.com) - Skill marketplace
 - [Clawdbot Docs](https://docs.clawd.bot) - Main documentation
-- [GitHub Issues](https://github.com/acastellana/moltbot-skill-publisher/issues) - Report bugs
+- [GitHub Issues](https://github.com/acastellana/skill-publisher-clawdbot-skill/issues) - Report bugs

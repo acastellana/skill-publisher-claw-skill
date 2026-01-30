@@ -1,3 +1,8 @@
+---
+name: skill-publisher-clawdbot-skill
+description: Prepare Clawdbot skills for public release. Use when publishing skills to GitHub or ClawdHub - covers security audit, portability, documentation, git hygiene. Triggers: publish skill, release skill, audit skill, skill checklist, prepare skill for release.
+---
+
 # Skill Publisher
 
 Prepare a skill for public release. Run through this checklist before publishing any skill to ensure it's reusable, clean, safe, and well-documented.
