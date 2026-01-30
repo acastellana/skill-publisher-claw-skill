@@ -310,7 +310,7 @@ git diff origin/main          # Changes are what you expect
 
 ### Repository Settings
 - [ ] Description filled in
-- [ ] Topics/tags added (e.g., `clawdbot`, `skill`, `ai-assistant`)
+- [ ] Topics/tags added (e.g., `claw`, `skill`, `ai-assistant`)
 - [ ] License file present
 
 ### Recommended License

@@ -127,5 +127,5 @@ MIT
 ## Resources
 
 - [ClawdHub](https://clawdhub.com) - Skill marketplace
-- [Clawdbot Docs](https://docs.clawd.bot) - Main documentation
+- [Claw Docs](https://docs.clawd.bot) - Main documentation
 - [GitHub Issues](https://github.com/acastellana/skill-publisher-claw-skill/issues) - Report bugs

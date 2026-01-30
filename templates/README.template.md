@@ -33,11 +33,11 @@ This skill is designed for AI assistants. Load it when:
 
 ## Installation
 
-### For Clawdbot
+### For Claw
 
 ```bash
 # Clone to your skills directory
-git clone https://github.com/user/skill-name.git ~/.clawdbot/skills/skill-name
+git clone https://github.com/user/skill-name.git ~/.claw/skills/skill-name
 ```
 
 ### For other assistants
